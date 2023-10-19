@@ -1,33 +1,23 @@
-﻿Console.WriteLine("Hello this is Number Guessing Game you have 3 Attemps , good luck");
-int attemps = 0;
-int maxattemps = 3;
-bool won = false;
+﻿
+int[] array = { 5, 2, 4, 1 };
 
+int n = array.Length;
 
-Random random = new Random();
-int randomnumber = random.Next(0, 10);
-
-while (attemps<maxattemps)
+for (int i = 1; i < n; i++)
 {
-    Console.WriteLine("Enter th number");
-    int customernumber = int.Parse(Console.ReadLine());
-
-    if (customernumber == randomnumber)
+    int key = array[i];
+    int j = i - 1;
+    while (j >= 0 && array[j] > key) 
     {
-        Console.WriteLine("Congretulation you Won");
-        break;
+        array[j + i] = array[j];
+        j--;
     }
+    array[j + 1] = key;
+}
+foreach (int element in array)
+    {
+    Console.WriteLine(element + " ");
+}
+Console.WriteLine();
 
-    if (customernumber!=randomnumber)
-        {
-            Console.WriteLine("Your Number is not Correct");
-       
-        }
-   
-    attemps++;
-     
-}
-if (!won)
-{
-    Console.WriteLine("Sorry you Lose");
-}
+
